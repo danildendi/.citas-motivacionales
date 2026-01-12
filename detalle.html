@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle de la cita</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <h2>📖 Detalle de la Cita</h2>
+</nav>
+
+<main class="container" id="detalleCita"></main>
+
+<a class="volver" href="index.html">⬅ Volver</a>
+
+<script>
+const citas = [
+  { id: 1, texto: "El éxito es la suma de pequeños esfuerzos repetidos día tras día.", autor: "Robert Collier" },
+  { id: 2, texto: "No cuentes los días, haz que los días cuenten.", autor: "Muhammad Ali" },
+  { id: 3, texto: "La única forma de hacer un gran trabajo es amar lo que haces.", autor: "Steve Jobs" }
+];
+
+const params = new URLSearchParams(window.location.search);
+const id = parseInt(params.get("id"));
+
+const cita = citas.find(c => c.id === id);
+
+if (cita) {
+  document.getElementById("detalleCita").innerHTML = `
+    <div class="card">
+      <p class="texto">"${cita.texto}"</p>
+      <p class="autor">— ${cita.autor}</p>
+    </div>
+  `;
+}
+</script>
